@@ -1,0 +1,71 @@
+<!-- Aqui ira el codigo que se va repetir en cualquier vista que creemos, es decir sera el marco de trabajo -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../static/img/assets/favicon-general.ico">
+    <title>{% block title %}{% endblock %}</title>
+    <!-- Font awesome -->
+    <link rel="stylesheet" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Font Oswald -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400&display=swap" rel="stylesheet">
+    <!-- Custon CSS -->
+    <link rel="stylesheet" type="text/css" href="../static/css/styles.css">
+</head>
+
+<body >
+    <div class="container">
+      <nav class="nav-main ">
+          <img class="nav__logo" src="../static/img/assets/logo.png" alt="Logo" ></img>
+
+          <ul class="nav__menu">
+
+              <li class="nav__item">
+                  <a href="index.html" class="nav__link">Pagina Principal</a>
+              </li>
+              <li class="nav__item">
+                <a href="gestiondatos.html" class="nav__link">Gestion de datos</a>
+              </li>
+              <li class="nav__item">
+                <a href="dashboard.html" class="nav__link">DashBoard</a>
+              </li>
+              </li>
+              <li class="nav__item">
+                  <a href="acercade.html" class="nav__link">Acerca de</a>
+              </li>
+              <li class="nav__item">
+                  <a href="login.html" class="nav__link">Cerrar sesion</a>
+              </li>
+
+          </ul>
+          
+          <ul>
+              <li>
+                  <a href="#">
+                      <i class="fas fa-search"></i>
+                  </a>
+              </li>
+          </ul>
+<!-- 
+          <a href="#" class="nav__hamburguer">
+              <img src="../static/img/assets/menu.svg" class="nav__icon">
+          </a>
+
+          <a href="#" class="nav__close">
+              <img src="../static/img/assets/close.svg" class="nav__icon">
+          </a> -->
+      </nav>
+      <hr>
+      
+      {% block content %}
+      {% endblock %}
+      
+    
+    </div>
+</body>
+</html>
