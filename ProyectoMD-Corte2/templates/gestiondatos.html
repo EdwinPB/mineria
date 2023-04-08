@@ -1,23 +1,141 @@
 {% extends "layout.html" %}
 {% block title %} Gestion de datos {% endblock %}
 {% block content %}
-<table>
-    <thead>
-      <tr>
-        <h2>Tabla</h2>
-        <td>Prueba</td>
-        <td>Prueba2</td>
-        <td>Prueba3</td>
-        <td>Prueba4</td>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Respuesta</td>
-        <td>Respuesta2</td>
-        <td>Respuesta3</td>
-        <td>Respuesta4</td>
-      </tr>
-    </tbody>
-</table>
+
+<div class="container-tabla" >
+
+  <form action="/add" class="form-gestiondatos" method="POST">
+    <h2 class="form-tittle">Insertar datos</h2>
+    {% with messages=get_flashed_messages() %}
+      {% if messages.0 == "1" %}
+        {% for message in messages %}
+          <div class="alert alert-danger alert-dismissible  fade show" role="alert">
+          fill all fields 
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="false">&times;</span>
+          </button>
+          </div>
+        {% endfor %}
+      {% elif messages.0 == "2" %}
+        {% for message in messages %}
+          <div class="alert alert-success alert-dismissible fade show" role="alert">
+            inserted data
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="false">&times;</span>
+          </button>
+          </div>
+        {% endfor %}      
+  
+      {% endif %}
+    {% endwith %}      
+    <input type="text" class="form-gestiondato__input" name="nombre" placeholder="Nombre">
+    <input type="text" class="form-gestiondato__input" name="ciudad" placeholder="Ciudad">
+    Salario:
+    <select type="text" class="form-gestiondato__input" name="salario">
+      <option name="salario" >Salario a convenir</option>
+    </select>
+    <input type="text" class="form-gestiondato__input" 
+     name="fechav" placeholder="Fecha Vencimiento(AAAA-M-D)">
+    Años de Experiencia:
+    <select type="text" class="form-gestiondato__input" name="yearExp">
+      <option >1</option><option >2</option><option >3</option><option >4</option><option >5</option>
+    </select>
+    Numero Vacantes:
+    <select type="text" class="form-gestiondato__input" name="numVacantes">
+      <option >1</option><option >2</option><option >3</option><option >4</option><option >5</option>
+    </select>
+    <button type="submit" class="form-gestiondato__btn"  >Save</button>
+  </form>
+
+  <table class="tabla" action="/gestiondatos.html" method="POST" >
+        <thead>
+          <h2 class="tabla-tittle">Tabla</h2>
+          {% with messages=get_flashed_messages() %}
+          {% if messages.0 == "0" %}
+          {% for message in messages %}
+          <div class="alert alert-danger alert-dismissible  fade show" role="alert">
+            deleted data
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="false">&times;</span>
+          </button>
+          </div>
+          {% endfor %}
+          {% elif messages.0 == "3" %}
+          {% for message in messages %}
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+              edited data
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="false">&times;</span>
+            </button>
+            </div>
+          {% endfor %}      
+          {% endif %}
+          {% endwith %}          
+          <tr>
+            <th class="tabla-head__name">#</th>
+            <th class="tabla-head__name">Nombre</th>
+            <th class="tabla-head__name">Ciudad</th>
+            <th class="tabla-head__name">Salario</th>
+            <th class="tabla-head__name">Fecha Publicacion</th>
+            <th class="tabla-head__name">Fecha Vencimiento</th>
+            <th class="tabla-head__name">Year Exp</th>
+            <th class="tabla-head__name">Numero Vacantes</th>
+            <th >Edit</th>
+            <th >Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          {%for d in data %} 
+            <tr>
+              <td data-label="#" class="tabla-body__name">{{d.IdEmpleo}}</td>
+              <td data-label="Nombre" class="tabla-body__name">{{d.Nombre}}</td>
+              <td data-label="Ciudad" class="tabla-body__name">{{d.Ciudad}}</td>
+              <td data-label="Salario" class="tabla-body__name">{{d.Salario}}</td>
+              <td data-label="Fecha Publicacion" class="tabla-body__name">{{d.FechaPublicacion}}</td>
+              <td data-label="Fecha Vencimiento" class="tabla-body__name">{{d.FechaVencimiento}}</td>
+              <td data-label="Year Exp" class="tabla-body__name">{{d.YearExp}}</td>
+              <td data-label="Numero Vacantes" class="tabla-body__name">{{d.NumeroVacantes}}</td>
+              <td data-label="Edit"><button class="btn btn-primary btn-sm" 
+                id="btn-edit{{d.IdEmpleo}}" data-bs-toggle="modal" data-bs-target="#modal{{d.IdEmpleo}}" >Edit</button></td>
+              <td data-label="Delete" ><a href="{{url_for('delete', id=d.IdEmpleo)}}" 
+                class="btn btn-danger btn-sm">Delete</a></td>            
+            </tr>
+            <!-- modal -->
+            <div class="modal fade" id="modal{{d.IdEmpleo}}" tabindex="-1"
+                  aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Editar Registro #{{d.IdEmpleo}}</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                      <form action="/edit/{{d.IdEmpleo}}" method="POST">
+                          <label>Nombre del empleo</label>
+                          <input type="text" class="form-control mb-3" name="nombre" value="{{d.Nombre}}">
+                          <label>Ciudad</label>
+                          <input type="text" class="form-control mb-3" name="ciudad" value="{{d.Ciudad}}">
+                          <label>Salario</label>
+                          <input type="text" class="form-control mb-3" name="salario" value="{{d.Salario}}">                       
+                          <label>Fecha Vencimiento</label>
+                          <input type="text" class="form-control mb-3" name="fechav" value="{{d.FechaVencimiento}}">
+                          <label>Year Exp</label>
+                          <input type="text" class="form-control mb-3" name="yearExp" value="{{d.YearExp}}">
+                          <label>Numero Vacantes</label>
+                          <input type="text" class="form-control mb-3" name="numVacantes" value="{{d.NumeroVacantes}}">
+                  </div>
+                  <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary" >Save changes</button>
+                  </div>
+                  </form>
+                </div>
+              </div>
+            </div>            
+          {%endfor%} 
+        </tbody>
+      </div>
+  </table>
+</div>
 {% endblock %}
+    <!-- Enlazar javascript  de forma correcta-->
+    <script src="../static/js/formulario.js"></script> 

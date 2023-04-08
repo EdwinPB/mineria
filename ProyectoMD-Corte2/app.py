@@ -16,13 +16,6 @@ def Paglogin():
 @app.route('/index.html')
 def Index():
     return render_template('index.html')   
-
-#--------------------------------------------------------------------------------------------------------
-#------------------------------------------- Pagina gestion de datos-------------------------------------
-@app.route('/gestiondatos.html')
-def Paggestiondatos():
-    return render_template('gestiondatos.html')   
-
 #--------------------------------------------------------------------------------------------------------
 #------------------------------------------- Pagina dashboard--------------------------------------------
 @app.route('/dashboard.html')
@@ -78,7 +71,74 @@ def login():
             return redirect(url_for('Paglogin'))
         
     else:    
-        return render_template('login,html')
+        return render_template('login.html')
+
+#------------------------------------------- Pagina gestion de datos-------------------------------------
+@app.route('/gestiondatos.html')
+## obtener data y mandar a un html
+def pagGestionDatos():
+    cur.execute('SELECT * FROM templeodev')
+    result=cur.fetchall()
+    #Convertir los datos a diccionario
+    insertObject= []
+    columnNames = [column[0] for column in cur.description]
+    for record in result:
+        insertObject.append(dict(zip(columnNames,record)))
+    
+    return render_template('gestiondatos.html',data=insertObject)
+@app.route('/add', methods=['POST'])
+def add():
+    nombre= request.form["nombre"]
+    ciudad= request.form["ciudad"]
+    salario= request.form["salario"]
+    fechav= request.form["fechav"]
+    yearExp= request.form["yearExp"]
+    numVacantes= request.form["numVacantes"]    
+
+    if len(nombre and ciudad and salario and fechav and yearExp and numVacantes) >= 1:
+        cur.execute("""INSERT INTO templeodev (Nombre,Ciudad,Salario
+        ,FechaPublicacion,FechaVencimiento,YearExp,NumeroVacantes)
+        VALUES(%s,%s,%s,CURDATE(),%s,%s,%s)""",
+        (nombre,ciudad,salario,fechav,yearExp,numVacantes))        
+        cnx.commit()
+        # MENSAJE (datos insertados)
+        flash("2")
+    else:
+        # MENSAJE (llenar todos los campos)
+        flash("1")
+    return redirect(url_for('pagGestionDatos'))
+
+
+@app.route('/delete/<id>')
+def delete(id):
+    sql = "DELETE FROM templeodev WHERE IdEmpleo=%s"
+    data = (id,)
+    cur.execute(sql,data)
+    cnx.commit()
+    #Dato Eliminado
+    flash('0')
+    return redirect(url_for('pagGestionDatos'))
+
+
+@app.route('/edit/<id>', methods=['POST'])
+def edit(id):
+    nombre= request.form["nombre"]
+    ciudad= request.form["ciudad"]
+    salario= request.form["salario"]
+    fechav= request.form["fechav"]
+    yearExp= request.form["yearExp"]
+    numVacantes= request.form["numVacantes"]       
+    sql = """UPDATE templeodev SET Nombre=%s, Ciudad=%s, Salario=%s, 
+    FechaPublicacion=CURDATE(), FechaVencimiento=%s, YearExp=%s, NumeroVacantes=%s 
+    WHERE IdEmpleo = %s"""
+    data = (nombre,ciudad,salario,fechav,yearExp,numVacantes,id)
+    cur.execute(sql,data)
+    cnx.commit()
+    #Dato Editado
+    flash('3')
+    return redirect(url_for('pagGestionDatos'))
+     
+#--------------------------------------------------------------------------------------------------------
 
 
 #------------Redirijir a cliente a login cuando ingrese a una pagina que no este definida---------------
