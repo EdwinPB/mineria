@@ -20,7 +20,14 @@ def Index():
 #------------------------------------------- Pagina dashboard--------------------------------------------
 @app.route('/dashboard.html')
 def Pagdashboard():
-    return render_template('dashboard.html')   
+    cur.execute('SELECT * FROM templeodev')
+    result=cur.fetchall()
+    #Convertir los datos a diccionario
+    insertObject= []
+    columnNames = [column[0] for column in cur.description]
+    for record in result:
+        insertObject.append(dict(zip(columnNames,record)))
+    return render_template('dashboard.html',data=insertObject)   
 
 #--------------------------------------------------------------------------------------------------------
 #------------------------------------------- Pagina Acerca de-------------------------------------

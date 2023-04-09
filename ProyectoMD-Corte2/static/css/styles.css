@@ -247,6 +247,10 @@ ul{
    
 }
 
+.container-grafico{
+    background: #fff;
+}
+
 @media screen and (max-width: 1320px){
     .form-gestiondatos{
         width: 100%;
