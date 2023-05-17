@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %} Contacta con nosotros {% endblock %}
+{% block content %}
+<main class="main-contactUs">
+    <div class="container-form_contact">
+        <h2>Contactenos</h2>
+        <form action="">
+            <label for="name">Nombre:</label>
+            <input type="text" id="name" placeholder="Nombre Completo">
+            <label for="email">Correo electrónico:</label>
+            <input type="email" id="email"  placeholder="Correo electrónico">
+            <label for="message">Mensaje:</label>
+            <textarea id="message" placeholder="Escribe el mensaje"></textarea>
+            <button class="btn-contact">Enviar</button>
+        </form>
+    </div>
+
+</main>
+{% endblock %}
+{% block js %}
+{% endblock %}

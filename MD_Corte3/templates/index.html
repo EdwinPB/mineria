@@ -1,0 +1,212 @@
+{% extends "base.html" %}
+{% block title %} Pagina Principal {% endblock %}
+{% block content %}
+<main>
+    <!-- Img Header -->
+    <figure class="img-header">
+        <div class="welcome">
+            <h1 class="img-header_title_uno">Regresion Logistica</h1>
+            <h2 class="img-header_title_dos"><a href="/" class="img-header_enlace">
+                    <i class="fa-solid fa-laptop-code"></i>
+                    <span>Machine Learning.</span>
+                </a></h2>
+        </div>
+    </figure>
+    <section>
+        <div class="container-section__index">
+            <h2 class="index-subtitle">¿Que es la Regresion Logistica?</h2>
+            <p class="index-p">
+                La regresión logística es un modelo estadístico utilizado
+                para analizar la relación entre una variable
+                dependiente categórica y una o más variables independientes
+                continuas o categóricas. También se conoce como
+                modelo de regresión logit, y se utiliza para predecir la
+                probabilidad de que una observación pertenezca a
+                una determinada clase o categoría. <br><br>
+                El modelo de regresión logística se basa en la función logística,
+                que transforma la salida en una probabilidad entre 0 y 1.
+                En resumen, la regresión logística es una técnica de
+                análisis predictivo que se utiliza comúnmente en el
+                aprendizaje automático y la estadística.
+            </p>
+
+            <!-- <h2 class="index-subtitle"></h2> -->
+            <!-- <p class="index-p"></p> -->
+            <h2 class="index-subtitle">¿Por qué es importante la regresión logística?</h2>
+            <p class="index-p">
+                La regresión logística es un modelo estadístico utilizado
+                para predecir variables binarias o dicotómicas, es decir,
+                aquellas que solo pueden tomar dos valores posibles. <br><br>
+                Este modelo es ampliamente utilizado en campos como
+                la medicina, la biología, la psicología y la investigación
+                de mercados para predecir la probabilidad de que ocurra
+                un determinado evento o resultado de un experimento.<br>
+                Además, permite identificar la influencia que tienen
+                las variables predictoras o independientes sobre la
+                variable dependiente binaria , lo que resulta útil
+                para tomar decisiones informadas en diversos ámbitos.
+            </p>
+            <h2 class="index-subtitle">Regresion Logistica en python</h2>
+            <div class="index-video">
+                <iframe src="https://www.youtube.com/embed/BHok3wJpmf0" 
+                title="YouTube video player" frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                allowfullscreen></iframe>
+            </div>
+            <br>
+            <h2 class="index-subtitle">Score</h2>
+            <p class="index-p">
+                El score en la regresión logística es una medida para evaluar
+                la calidad del modelo en términos de su capacidad para predecir
+                correctamente la variable objetivo. Esta puntuación se calcula
+                a partir de la probabilidad de la clase positiva
+                (la que se desea predecir) y se interpreta como una medida de la
+                precisión del modelo. <br>
+                El score de la regresión logística oscila entre 0 y 1, siendo 0,5
+                un valor que indica que el modelo no es mejor que adivinar al azar,
+                mientras que valores cercanos a 1 sugieren que el modelo es muy preciso.
+            </p>
+            <h2 class="index-subtitle">Matriz de confusión</h2>
+            <p class="index-p">
+                La matriz de confusión es una herramienta que se utiliza
+                en la regresión logística y otros modelos de clasificación
+                para evaluar la calidad de las predicciones del modelo. <br>
+                La matriz de confusión es una tabla que muestra las
+                predicciones del modelo , tanto las verdaderas
+                como las falsas, y las compara con los resultados reales
+                para cada clase. <br><br>
+                La matriz cuenta con cuatro elementos: <br>
+                <b>verdaderos positivos (TP)</b> <br>
+                <b>verdaderos negativos (TN)</b> <br>
+                <b>falsos positivos (FP)</b> <br>
+                <b>falsos negativos (FN)</b> <br> <br>
+
+                En la regresión logística, los verdaderos positivos representan
+                los casos en los que el modelo previó la ocurrencia de
+                un evento y efectivamente sucedió, mientras que
+                los verdaderos negativos representan los casos en los
+                que el modelo previó que no ocurriría el evento y efectivamente no sucedió.
+                Por otro lado, los falsos positivos representan los casos
+                en los que el modelo previó la ocurrencia del evento, pero no sucedió
+                y los falsos negativos son aquellos en los que el
+                modelo previó que no ocurriría el evento, pero efectivamente sucedió. <br> <br>
+
+                La matriz de confusión se utiliza para calcular métricas de
+                evaluación del modelo, como la precisión, la sensibilidad,
+                la especificidad, la tasa de falsos positivos y la tasa
+                de falsos negativos. <br>
+                Estas métricas son importantes porque permiten determinar
+                qué tan bien está funcionando el modelo y si es
+                necesario hacer ajustes o mejoras en su diseño.
+            </p>
+            <h2 class="index-subtitle">Prediccion</h2>
+            <p class="index-p">
+                En el caso del modelo de regresión logística,
+                se utilizan los valores de las variables predictoras de
+                un nuevo conjunto de datos para hacer predicciones
+                sobre la variable objetivo. A partir de estos valores,
+                el modelo predice la clase de la variable objetivo,
+                proporcionando una probabilidad que indica la
+                probabilidad de que la observación pertenezca a la
+                clase positiva. <br>
+                Es importante destacar que se utiliza un umbral predeterminado,
+                generalmente de 0.5, para clasificar la
+                observación como perteneciente a la clase positiva o negativa. <br><br>
+
+                Sin embargo, establecer un umbral predeterminado no siempre
+                es la mejor práctica, ya que puede haber casos en los que
+                las consecuencias de una clasificación incorrecta de clase positiva
+                o clase negativa no sean iguales. Por ello, existen
+                técnicas como la curva ROC, que permiten evaluar la precisión de
+                un modelo ajustando el umbral según consideraciones
+                específicas para cada caso.
+
+                Además, antes de aplicar el modelo a un conjunto de datos de prueba,
+                se deben llevar a cabo una serie de pasos para
+                evaluar su capacidad predictiva, como la selección de variables
+                importantes y la realización de pruebas de bondad de
+                ajuste. Con una evaluación adecuada y un buen ajuste del modelo,
+                se pueden obtener predicciones más precisas y aumentar
+                la capacidad de la regresión logística como herramienta
+                para la toma de decisiones.
+            </p>
+
+            <h2 class="index-subtitle">CRISP-DM</h2>
+            <p class="index-p">
+                La metodología CRISP-DM (Cross-Industry Standard Process for Data Mining)
+                es un enfoque sistemático utilizado para guiar
+                el proceso de minería de datos. <br>
+                Tiene seis fases, cada una con sus propios procesos y actividades: <br>
+                <b>Entendimiento del negocio:</b> en esta fase se define el problema
+                de negocio que se quiere resolver y se establecen los
+                objetivos del proyecto. <br>
+                <b>Entendimiento de los datos:</b> en esta fase se recolectan los datos
+                relevantes y se realizan actividades de exploración y
+                análisis para entender la calidad y la estructura de los mismos. <br>
+                <b>Preparación de los datos:</b> en esta fase se lleva a cabo la limpieza,
+                transformación y selección de los datos para prepararlos para el modelado. <br>
+                <b>Modelado:</b> en esta fase se selecciona el algoritmo de modelado apropiado
+                y se ajustan los parámetros del modelo. <br>
+                <b>Evaluación:</b> en esta fase se evalúa el rendimiento del modelo y se
+                determina si cumple con los requisitos del negocio.
+                <b>Implementación:</b> en esta fase se implementa el modelo en el entorno
+                de producción y se realiza su seguimiento.
+            </p>
+            <h2 class="index-subtitle">¿Como Utilizar CRISP-DM en nuestro proyecto?</h2>
+            <p class="index-p">
+                Para abordar este problema, se pueden seguir los siguientes pasos 
+                utilizando la metodología CRISP-DM: <br>
+                <b>Entendimiento del negocio:</b> se define el problema de negocio 
+                que se quiere resolver y se establecen los objetivos del proyecto, 
+                como determinar si un vino es de calidad o no. <br>
+                <b>Entendimiento de los datos:</b> se recolectan los datos relevantes 
+                sobre los vinos, como la variedad de uva,
+                la región productora, el contenido de alcohol, la acidez, entre otros. <br> 
+                Se realizan actividades de exploración y análisis para 
+                entender la calidad de los datos. <br>
+                <b>Preparación de los datos:</b> se realiza la limpieza de los datos, 
+                como eliminar registros duplicados o datos faltantes. 
+                Luego se seleccionan las variables más relevantes para el modelo, 
+                considerando la correlación entre ellas y su importancia 
+                para la variable objetivo. <br>
+                <b>Modelado:</b> se selecciona un algoritmo de clasificación binaria, 
+                como la regresión logística o el árbol de
+                decisiones, y se ajustan los parámetros del modelo para maximizar 
+                su rendimiento en los datos de entrenamiento. <br>
+                <b>Evaluación:</b> se evalúa el rendimiento del modelo mediante 
+                métricas como la precisión, la sensibilidad y
+                la especificidad. Se ajustan los parámetros del modelo 
+                si es necesario para mejorar su desempeño. <br>
+                <b>Implementación:</b> se implementa el modelo en el entorno de producción 
+                y se realiza su seguimiento para
+                asegurar que sigue siendo eficaz en el tiempo. <br>
+                Es importante mencionar que se recomienda dividir los datos en un 
+                conjunto de entrenamiento y otro de prueba para evaluar la capacidad 
+                del modelo para generalizar a nuevos datos. Además, se puede utilizar
+                técnicas de validación cruzada para mejorar la robustez del modelo. 
+            </p>
+
+            <h2 class="index-subtitle">¡Modal!</h2>
+            <div class="container-btn-index">
+                <button class="index-btn">¡Ver Equipo de desarrollo!</button>
+            </div>
+            <div class="modal-container">
+                <div class="modal modal-close">
+                    <img class="img-m__cont" src="../static/img/img2.png" alt="Imagen de desarrollo">
+                    <div class="modal-texto">
+                        <h2>¡Equipo!</h2>
+                        <p>Dev FrontEnd Carlos Castaño</p>
+                        <p class="modal-texto_final">Dev BackEnd Edwin Polo</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+</main>
+
+{% endblock %}
+{% block js %}
+<script src="../static/js/index.js"></script>
+{% endblock %}

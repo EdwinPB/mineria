@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <!-- Font awesome -->
+    <link rel="stylesheet" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custon CSS -->
+    <link rel="stylesheet" type="text/css" href="../static/css/styles.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/tablet.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/mobile.css">    
+    <!-- Fuentes -->
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header id="header">
+
+        <!-- Navegation Menu -->
+        <nav class="menu">
+            <div class="logobox">
+                <h1 class="logo"><a href="/">
+                   <img  class="img-logo" src="../static/img/logo32px.ico" alt="Logo" ></img>
+                   Development Team
+                </a></h1>
+   
+                <span class="btn-menu"><i class="fas fa-bars"></i></span>
+            </div>
+   
+            <div class="list-container">
+                <ul class="lists">
+                    <li><a href="/" class="active">Inicio</a></li>
+                    <li><a href="contact_Us.html">Contáctenos</a></li>
+                    <li><a href="about_Us.html">Acerca de</a></li>
+                    <li><a href="login.html">Iniciar Session</a></li>
+                </ul>
+            </div>
+        </nav>
+   
+
+   
+       </header>
+
+    {% block content %}
+  
+    {% endblock %}
+    <!-- Footer -->
+    <footer>
+       <p>&copy; Desarrollado por un equipo de trabajo - 2023 | Development Team</p>
+    </footer>
+    {% block js %}
+    {% endblock %}
+    <!-- Scripts -->
+    <script src="https://kit.fontawesome.com/71c23c1755.js" crossorigin="anonymous"></script>
+    <script src="../static/js/reponsive_menu.js"></script>
+</body>
+</html>
