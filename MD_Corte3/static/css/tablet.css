@@ -1,0 +1,72 @@
+@media only screen and (max-width:804px) {
+
+    /* Disminuir tamaño titulo del logo */
+    #header > nav > div.logobox > h1 > a{
+    font-size: 17px;
+    }
+
+    /** Navegation Menu **/
+    .btn-menu{
+        position: absolute;
+        top: 12px;
+        right: 30px;
+        display: block;
+        color:var(--color-letras-nav-menu);
+        font-size: 30px;
+        cursor: pointer;
+    }
+    .menu .list-container{
+        position: absolute;
+        top: 60px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 60px);
+        background: #000;
+        border-top: 3px solid #fff;
+    }
+    .menu .list-container .lists{
+        display: block;
+        width: 90%;
+        margin:50px auto;
+    }
+    .menu .list-container .lists li{
+        display: flex;
+        justify-content: center;
+        border-bottom: 2px solid #fff;
+    }
+    .menu .list-container .lists li a{
+        margin:5px 0px;
+    }
+
+    /* ------------------index */
+    /** Img Header **/
+    .img-header .welcome{
+        width: 80%;
+        margin:auto;
+    }
+    .img-header_title_uno{font-size: 20px;}
+    .img-header_title_dos, .img-header_enlace{font-size: 40px;}
+    .index-subtitle{font-size: 25px;}
+    .index-p{font-size: 17px;}
+    .modal{width: 80%;}
+
+    /*------------------------Acerca de */
+    /* Desaparecer la imagen de fondo */
+    .img-acercade{
+        background:  var(--color-fondo-acercade-tablet);
+    }
+    .about-us__title{
+        font-size: 30px;
+    }
+    .about-us__team{
+        font-size: 19px;
+    }
+    /* --------------------------------- */
+
+    /* Disminuir tamaño del texto del footer */
+    footer p {
+    font-size: 17px;
+}
+    
+
+}

@@ -1,0 +1,62 @@
+
+@media only screen and (max-width:560px) {
+
+/* Disminuir tamaño titulo del logo */
+#header > nav > div.logobox > h1 > a{
+    font-size: 10px;
+}
+
+/*-------------------- Login */
+/*  Disminuir tamaño  de los titulo del login  */
+.container-login_title__one,.container-login_title__two{
+    font-size: 17px;
+}
+
+/* Centrar caja del login*/
+.form-box{
+    width: 100%;
+    height: auto ;
+}
+/* Imagen de fondo de login desaparece */
+.container-login{
+    background: var(--color-fondo-login-mobile);
+}
+/* ---------------------------- */
+
+
+/*---------------------------------- Inicio */
+/* disminuir tamaño de titulos de la imagen */
+.img-header_title_uno{font-size: 20px;}
+.img-header_title_dos,.img-header_enlace{font-size: 30px;}
+.index-subtitle{font-size: 23px;}
+.index-p{font-size: 15px;}
+.modal{width: 80%;}
+/* ------------------------------------------- */
+
+/*------------------------Acerca de */
+/* Desaparecer la imagen de fondo */
+.img-acercade{
+    background: var(--color-fondo-acercade-mobile);
+}
+.about-us__title{
+    font-size: 25px;
+}
+.about-us__team{
+    font-size: 18px;
+}
+/* --------------------------------- */
+
+/* ----------------------Contact Us */
+.container-form_contact{
+    width: 100%;
+    height: 100%;
+}
+
+/* -------------------------- */
+
+/* Disminuir tamaño del texto del footer */
+footer p {
+    font-size: 14px;
+}
+
+}
