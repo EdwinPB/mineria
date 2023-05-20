@@ -18,3 +18,12 @@ try:
 
 except (Exception, psycopg2.Error) as error :
     print ("Error while connecting to PostgreSQL", error)
+    cnx = psycopg2.connect(
+                                user = "postgres",
+                                password = "novenosemestre2023",
+                                host = "db.pjmgzfabrnnnojytbirb.supabase.co",
+                                port = "5432",
+                                database = "postgres")
+
+    cur = cnx.cursor()
+

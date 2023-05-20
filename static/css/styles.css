@@ -2,6 +2,7 @@
     margin:0;
     padding:0;
     box-sizing: border-box;
+    scroll-behavior: smooth;
 }
 :root {
     --color-white: #fff;
@@ -25,6 +26,7 @@ body{
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+
 }
 
 /* Pagina BASE (para todo el sitio) */
@@ -57,7 +59,7 @@ body{
 .menu .logobox h1 > a > i{color:var(--color-yellow); margin-right: 10px;}
 .menu .list-container{margin-right: 30px;}
 .menu .list-container .lists{display: flex;}
-.menu .list-container .lists li{list-style: none;}
+.menu .list-container .lists li{list-style: none; padding-top: 20px;}
 .menu .list-container .lists li a{
     text-decoration: none;
     color:var(--color-white);
@@ -85,6 +87,7 @@ body{
     width: 100%;
     height:100vh;
 }
+
 .img-header .welcome{
     width: 100%;
     height: 100vh;
@@ -99,9 +102,34 @@ body{
     font-size: 30px;
     text-align: center;
 }
-
-.img-header_title_dos{
-    margin-top: 50px;
+.btn-img_header{
+    width: 200px;
+    height: 50px;
+    color: #fff;
+    font-size:20px ;
+    border-radius: 10px;
+    background: var(--color-fondo-btn);
+    cursor: pointer;
+    border: 2px solid #000;
+    text-align: center;
+    margin: 20px;
+}
+.btn-img_header:hover{background: #3742fa;}
+.span-index{color: #fff;}
+.div-Arrow_down {
+    position: absolute;
+    padding: 15px 20px;
+    bottom: 20px;
+    right: 20px;
+    background: #e71919;
+    border: 1px solid white;
+    border-radius: 100%;
+}
+.div-Arrow_down:hover{background: #ff0000;}
+.div-Arrow_down i {
+    font-size: 50px;
+    color: #fff;
+    cursor: pointer;
 }
 
 /* Maquina de escribir */
@@ -162,7 +190,7 @@ section{
 .container-btn-index{text-align: center;}
 .index-btn{
     width: 200px;
-    height: 50px;
+    height: auto;
     color: #fff;
     font-size:20px ;
     border-radius: 10px;
@@ -186,9 +214,9 @@ section{
     justify-content: center;
     align-items: center;
 }
-.modal{
+.modal-teamdev{
     width: 40%;
-    height: 50%;
+    height: auto;
     background: #aed0ec;
     /* overflow: hidden; */
     text-align: center;
@@ -215,6 +243,97 @@ section{
     height: 75%;
     padding-top: 30px;
 }
+.btn-Arrow_up {
+    position: fixed;
+    padding: 15px 20px;
+    margin-bottom: 20px;
+    bottom: 40px;
+    right: 20px;
+    background: #e71919;
+    border: 1px solid white;
+    border-radius: 100%;
+    transform: translateY(10000px);
+    /* transform: scale(0); */
+    transition: 0.3s;
+}
+.btn-scrollArrow_up-on{
+    transform: translateY(0);
+    /* transform: scale(1); */
+}
+.btn-Arrow_up:hover{background: #ff0000;}
+.btn-Arrow_up i {
+    font-size: 50px;
+    color: #fff;
+    cursor: pointer;
+}
+/*---------------- Pagina prediccion */
+.main-prediccion{
+    background: #ededed;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.container-form_pred{
+    width: 450px;
+    margin: 80px auto 40px auto;
+    border: 2px solid #000;
+    border-radius: 10px;
+    padding: 10px 20px;
+    box-sizing: border-box;
+}
+
+.container-form_pred h2{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 30px;
+}
+.container-form_pred input{
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 7px;
+    box-sizing: border-box;
+    font-size: 17px;
+    border: none;
+}
+.container-form_pred form label{
+    display: block;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+.btn-submit_pred{
+    width: 100%;
+    height: auto;
+    color: #fff;
+    font-size:20px ;
+    border-radius: 10px;
+    background: var(--color-fondo-btn);
+    cursor: pointer;
+    border: 2px solid #000;
+    margin-bottom: 20px;
+}
+.btn-submit_pred:hover{background: #3742fa;}
+/* Flecha hacia abajo */
+.div-Arrow_down_pag_pred{
+    position: absolute;
+    padding: 15px 20px;
+    top: 60px;
+    right: 20px;
+    background: #e71919;
+    border: 1px solid white;
+    border-radius: 100%;
+}
+.div-Arrow_down_pag_pred:hover{background: #ff0000;}
+.div-Arrow_down_pag_pred i {
+    font-size: 50px;
+    color: #fff;
+    cursor: pointer;
+}
+
+/* Flecha hacia arriba */
 
 /*---------------- Pagina Contact Us */
 .main-contactUs{
@@ -303,7 +422,6 @@ section{
 
 .img-acercade{
     background: #000;
-    position: relative;
     margin: 0;
     padding: 0;
     width: 100%;
@@ -313,7 +431,7 @@ section{
 footer{
     background: var(--color-fondo-footer);
     width: 100%;
-    height: 60px;
+    height: auto;
     margin-top: auto;
     display: flex;
     justify-content: center;
@@ -328,7 +446,7 @@ footer p {
 /* Login */
 
 .container-login{
-    /* background: #ededed; */
+    background: #000;
     margin-top: 20px;
     height: 100vh;
     display: flex;
@@ -339,21 +457,18 @@ footer p {
     font-size: 20px;
     font-family: 'Oswald', 'sans-serif';    
     overflow: hidden;
-    background: url(../img/aboutUs-img1.jpg);
-    background-attachment: fixed;
-    background-position: center;
-    background-size: cover;
     padding-top: 40px;
+    padding-bottom: 20px;
 }
 .form-box{
     width: 300px;
-    height: 400px;
+    height: auto;
     padding: 40px;
-    background: var(--color-black);
+    background:var(--color-black);
     text-align: center;
     color: var(--color-white);
     border-radius: 20px;
-
+    margin-bottom: 80px;
 }
 
 .container-login_title__two{
@@ -381,6 +496,7 @@ footer p {
     transition: 0.25s ;
 }
 
+
 .btn-username__login:focus,
 .btn-passw__login:focus{
     width:280px ;
@@ -400,3 +516,80 @@ footer p {
     width:100%;
     font-size: 20px;
 }
+
+/* contact_us_admin */
+
+.container-tabla{
+    width: 100%;
+    /* Limite */
+    max-width: 2000px;
+    margin: auto;
+    /* background: #ededed; */
+ }
+
+ .tabla{
+    width: 90%;
+    height: 100%;
+    border: 1px solid #cccc;
+    border-collapse: collapse;
+    margin: auto;
+    padding: 0;
+    margin-bottom: 50px;
+    table-layout: fixed;
+    background-color: #ddd;
+}
+
+.tabla-tittle{
+    display: block;
+    text-align: center;
+    font-size: 28px;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin: 100px 0px 10px 0px;
+    color: #000;  
+    }
+.tabla tr {
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+}
+
+.tabla th, .tabla td{
+    font-size: 16px;
+    padding: 8px;
+    text-align: center;
+    color: #000000;
+}
+
+.tabla thead th{
+    text-transform: uppercase;
+    background-color: #ddd;
+}
+
+.tabla tbody tr:hover{
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.tabla tbody td:hover{
+    background-color:rgba(0, 0, 0, 0.3); ;
+}
+.modal-contact_us_admin{
+    background: #000;
+    padding-top: 100px;
+    width: 100%;
+    height: auto;
+}
+.btn-close{
+    padding: 15px 10px;
+    color: white;
+    background: red;
+    border-radius: 10px;
+}
+
+/* Editar clases de boostrap */
+.fade.show{
+    text-align: center;
+    width: 100%;
+    margin: 20px auto;
+}
+
+

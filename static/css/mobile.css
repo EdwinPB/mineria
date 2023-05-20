@@ -48,11 +48,49 @@
 
 /* ----------------------Contact Us */
 .container-form_contact{
-    width: 100%;
-    height: 100%;
+    width: 90%;
+    height: auto;
 }
 
+/* ----------------------Prediccion */
+.container-form_pred{
+    width: 80%;
+    height: auto;
+}
 /* -------------------------- */
+/* Contac Us admin */
+.tabla{
+    border: 0;
+}
+.tabla .tabla-tittle{
+    font-size: 22px;
+}
+.tabla thead{
+    display: none;
+}
+.tabla tr {
+    margin: 8px;
+    border: 4px solid #ddd;
+    display: block;
+}
+.tabla th, .tabla td{
+    font-size: 12px;
+}
+.tabla td{
+    display: block;
+    border-bottom:1px solid #ddd ;
+    text-align: right;
+}
+.tabla td:last-child{
+    border-bottom: 0px;
+}
+.tabla td::before {
+    content: attr(data-label);
+    font-weight: bold;
+    text-transform: uppercase;
+    float: left;
+}
+
 
 /* Disminuir tamaño del texto del footer */
 footer p {

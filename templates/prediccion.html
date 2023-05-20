@@ -1,0 +1,139 @@
+{% extends "base.html" %}
+{% block title %} Prediccion {% endblock %}
+{% block enlaces %}
+<li><a href="/" class="active">Inicio</a></li>                   
+<li><a href="contact_Us">Contáctenos</a></li>
+<li><a href="about_Us">Acerca de</a></li>
+<li id="nodo-login"><a href="login">Iniciar Session</a></li>
+{% endblock %}
+{% block token %}{{token}}{% endblock %}
+{% block content %}
+<main class="main-prediccion">
+<div class="container-form_pred">
+    <div class="div-Arrow_down_pag_pred">
+        <i class="fa-solid fa-arrow-down Arrow_down_pag_pred"></i>
+    </div>
+    <h2>Formulario de prediccion</h2>
+    <form action="/prediccion/add" method="POST">
+
+        {% with messages=get_flashed_messages() %}
+        {% if messages.0 == "0" %}
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                Datos No Enviados <br>
+                Complete todos los campos
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="false">&times;</span>
+            </button>
+            </div>
+        {% elif messages.0 == "3"  %}
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                Datos Enviados <br>
+                Calidad tipo 3: No es tan buena
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="false">&times;</span>
+            </button>
+            </div>
+        {% elif messages.0 == "4"  %}
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                Datos Enviados <br>
+                Calidad tipo 4: Regular
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="false">&times;</span>
+            </button>
+            </div>        
+        {% elif messages.0 == "5"  %}
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                Datos Enviados <br>
+                Calidad tipo 5: Normal
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="false">&times;</span>
+            </button>
+            </div>        
+        {% elif messages.0 == "6"  %}
+            <div class="alert alert-success  alert-dismissible fade show" role="alert">
+                Datos Enviados <br>
+                Calidad tipo 6: Buena
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="false">&times;</span>
+            </button>
+            </div>        
+        {% elif messages.0 == "7"  %}
+            <div class="alert alert-success  alert-dismissible fade show" role="alert">
+                Datos Enviados <br>
+                Calidad tipo 7: Muy buena
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="false">&times;</span>
+            </button>
+            </div>  
+        {% elif messages.0 == "8"  %}
+            <div class="alert alert-success  alert-dismissible fade show" role="alert">
+                Datos Enviados <br>
+                Calidad tipo 8: La mejor calidad
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="false">&times;</span>
+            </button>
+            </div>  
+        {% endif %}
+        {% endwith %}
+        <label for="fixedacidity">fixed acidity:</label>
+        <input type="number" id="fixedacidity" name="fixedacidity"
+        step="0.1" min="4.6" max="15.9">
+
+        <label for="volatileacidity">volatile acidity:</label>
+        <input type="number" id="volatileacidity" name="volatileacidity"
+        step="0.001" min="0.12" max="0.98">
+
+        <label for="citricacid">citric acid:</label>
+        <input type="number" id="citricacid" name="citricacid"
+        step="0.01" min="0" max="1">
+
+        <label for="residualsugar">residual sugar:</label>
+        <input type="number" id="residualsugar" name="residualsugar"
+        step="0.1" min="0.9" max="15.5">
+
+        <label for="chlorides">chlorides:</label>
+        <input type="number" id="chlorides" name="chlorides"
+        step="0.001" min="0.012" max="0.611">
+
+        <label for="freesulfurdioxide">free sulfur dioxide:</label>
+        <input type="number" id="freesulfurdioxide" name="freesulfurdioxide"
+        step="0.1" min="1" max="72">
+
+        <label for="totalsulfurdioxide">total sulfur dioxide:</label>
+        <input type="number" id="totalsulfurdioxide" name="totalsulfurdioxide"
+        step="1" min="6" max="289">
+
+        <label for="density">density:</label>
+        <input type="number" id="density" name="density"
+        step="0.00001" min="0.99007" max="1">
+
+        <label for="pH">pH:</label>
+        <input type="number" id="pH"  name="pH"
+        step="0.01" min="2.74" max="4.01">
+
+        <label for="sulphates">sulphates:</label>
+        <input type="number" id="sulphates" name="sulphates"
+        step="0.01" min="0.33" max="2">
+
+        <label for="alcohol">alcohol:</label>
+        <input type="number" id="alcohol" name="alcohol"
+        step="0.01" min="8.4" max="14.9">
+
+        <button type="submit" class="btn-submit_pred">Enviar</button>
+    </form>
+</div>
+<button class="btn-Arrow_up ">
+    <i class="fa-solid fa-arrow-up Arrow_up"></i>
+</button>
+</main>
+{% endblock %}
+{% block js %}
+<!-- Scripts BOOSTRAP -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>    
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="../static/js/base.js"></script>
+<script src="../static/js/prediccion.js"></script>
+{% endblock %}

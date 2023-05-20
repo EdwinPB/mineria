@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block title %} Contacta con nosotros {% endblock %}
+{% block enlaces %}
+<li><a href="/" class="active">Inicio</a></li>
+<li><a href="prediccion" >Prediccion</a></li>                    
+<li><a href="about_Us">Acerca de</a></li>
+<li id="nodo-login"><a href="login">Iniciar Session</a></li>
+{% endblock %}
+{% block token %}{{token}}{% endblock %}
+{% block content %}
+<main class="main-contactUs">
+    <div class="div-Arrow_down_pag_pred">
+        <i class="fa-solid fa-arrow-down Arrow_down_pag_pred"></i>
+    </div>
+    <div class="container-form_contact">
+        <h2>Contactenos</h2>
+        <form action="/contact_Us/add" method="POST">
+            <label for="name">Nombre:</label>
+            <input type="text" id="name" name="name" placeholder="Nombre Completo">
+            <label for="email">Correo electrónico:</label>
+            <input type="email" id="email" name="email" placeholder="Correo electrónico">
+            <label for="message">Mensaje:</label>
+            <textarea id="message" name="message" placeholder="Escribe el mensaje"></textarea>
+            {% with messages=get_flashed_messages() %}
+                {% if messages.0 == "0" %}
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    Datos Enviados
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="false">&times;</span>
+                </button>
+                </div>
+                {% else %}
+                {% for message in messages %}
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    Datos no enviados (complete los datos).
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="false">&times;</span>
+                </button>
+                </div>
+                {% endfor %}                
+            {% endif %}
+            {% endwith %}            
+            <button class="btn-contact">Enviar</button>
+        </form>
+    </div>
+
+</main>
+{% endblock %}
+{% block js %}
+<!-- Scripts BOOSTRAP -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>    
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="../static/js/base.js"></script>
+<!-- Copie el mismo script para ahorrar tiempo y codigo -->
+<script src="../static/js/prediccion.js"></script>>
+{% endblock %}

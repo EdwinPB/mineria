@@ -1,15 +1,28 @@
 {% extends "base.html" %}
 {% block title %} Pagina Principal {% endblock %}
+{% block enlaces %}
+<li><a href="prediccion" >Prediccion</a></li>                    
+<li><a href="contact_Us">Contáctenos</a></li>
+<li><a href="about_Us">Acerca de</a></li>
+<li id="nodo-login"><a href="login">Iniciar Session</a></li>
+{% endblock %}
+{% block token %}{{token}}{% endblock %}
 {% block content %}
 <main>
+    
     <!-- Img Header -->
     <figure class="img-header">
         <div class="welcome">
             <h1 class="img-header_title_uno">Regresion Logistica</h1>
-            <h2 class="img-header_title_dos"><a href="/" class="img-header_enlace">
+            <p class="img-header_title_uno">¡Para predecir la calidad de tu vino!</p>
+            <a href="prediccion"><button class="btn-img_header" >¡Click Aqui!</button></a>
+            <h2 class="img-header_title_dos">
+                    <div  class="img-header_enlace">
                     <i class="fa-solid fa-laptop-code"></i>
-                    <span>Machine Learning.</span>
-                </a></h2>
+                </div><span class="span-index">Machine Learning.</span></h2>
+                <div class="div-Arrow_down">
+                    <i class="fa-solid fa-arrow-down Arrow_down"></i>
+                </div>
         </div>
     </figure>
     <section>
@@ -26,7 +39,7 @@
                 El modelo de regresión logística se basa en la función logística,
                 que transforma la salida en una probabilidad entre 0 y 1.
                 En resumen, la regresión logística es una técnica de
-                análisis predictivo que se utiliza comúnmente en el
+                análisi s predictivo que se utiliza comúnmente en el
                 aprendizaje automático y la estadística.
             </p>
 
@@ -191,7 +204,7 @@
                 <button class="index-btn">¡Ver Equipo de desarrollo!</button>
             </div>
             <div class="modal-container">
-                <div class="modal modal-close">
+                <div class="modal-teamdev modal-close">
                     <img class="img-m__cont" src="../static/img/img2.png" alt="Imagen de desarrollo">
                     <div class="modal-texto">
                         <h2>¡Equipo!</h2>
@@ -200,8 +213,10 @@
                     </div>
                 </div>
             </div>
-
         </div>
+        <button class="btn-Arrow_up ">
+            <i class="fa-solid fa-arrow-up Arrow_up"></i>
+        </button>
     </section>
 
 </main>
@@ -209,4 +224,5 @@
 {% endblock %}
 {% block js %}
 <script src="../static/js/index.js"></script>
+<script src="../static/js/base.js"></script>
 {% endblock %}

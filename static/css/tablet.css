@@ -1,4 +1,4 @@
-@media only screen and (max-width:804px) {
+@media only screen and (max-width:1400px) {
 
     /* Disminuir tamaño titulo del logo */
     #header > nav > div.logobox > h1 > a{
@@ -33,6 +33,7 @@
         display: flex;
         justify-content: center;
         border-bottom: 2px solid #fff;
+        padding-top: 0;
     }
     .menu .list-container .lists li a{
         margin:5px 0px;
@@ -62,6 +63,39 @@
         font-size: 19px;
     }
     /* --------------------------------- */
+    /* Contac Us admin */
+    .tabla{
+        border: 0;
+    }
+    .tabla .tabla-tittle{
+        font-size: 22px;
+    }
+    .tabla thead{
+        display: none;
+    }
+    .tabla tr {
+        margin: 8px;
+        border: 4px solid #ddd;
+        display: block;
+    }
+    .tabla th, .tabla td{
+        font-size: 12px;
+    }
+    .tabla td{
+        display: block;
+        border-bottom:1px solid #ddd ;
+        text-align: right;
+    }
+    .tabla td:last-child{
+        border-bottom: 0px;
+    }
+    .tabla td::before {
+        content: attr(data-label);
+        font-weight: bold;
+        text-transform: uppercase;
+        float: left;
+    }
+
 
     /* Disminuir tamaño del texto del footer */
     footer p {

@@ -14,6 +14,9 @@
     <link rel="stylesheet" type="text/css" href="../static/css/mobile.css">    
     <!-- Fuentes -->
     <link href="https://fonts.googleapis.com/css?family=Lora:400,700&display=swap" rel="stylesheet">
+    <!-- BOOSTRAP -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    
 </head>
 <body>
     <header id="header">
@@ -30,24 +33,27 @@
             </div>
    
             <div class="list-container">
-                <ul class="lists">
-                    <li><a href="/" class="active">Inicio</a></li>
-                    <li><a href="contact_Us.html">Contáctenos</a></li>
-                    <li><a href="about_Us.html">Acerca de</a></li>
-                    <li><a href="login.html">Iniciar Session</a></li>
+                <ul id="lists" class="lists">
+                    {% block enlaces %}
+                    <!-- <li><a href="/" class="active">Inicio</a></li>
+                    <li><a href="prediccion" >Prediccion</a></li>                    
+                    <li><a href="contact_Us">Contáctenos</a></li>
+                    <li><a href="contact_Us_Admin">Contáctenos Admin </a></li>
+                    <li><a href="about_Us">Acerca de</a></li>
+                    <li><a href="login">Iniciar Session</a></li>
+                    <li><a href="logout">Cerrar Session</a></li>                     -->
+                    {% endblock %}
                 </ul>
             </div>
         </nav>
-   
-
-   
        </header>
-
+      
+    <div id="token" style="display:none;">{% block token %}{% endblock %}</div>   
     {% block content %}
-  
+    
     {% endblock %}
     <!-- Footer -->
-    <footer>
+    <footer class="footer-pag">
        <p>&copy; Desarrollado por un equipo de trabajo - 2023 | Development Team</p>
     </footer>
     {% block js %}
@@ -55,5 +61,6 @@
     <!-- Scripts -->
     <script src="https://kit.fontawesome.com/71c23c1755.js" crossorigin="anonymous"></script>
     <script src="../static/js/reponsive_menu.js"></script>
+    
 </body>
 </html>
