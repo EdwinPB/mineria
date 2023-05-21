@@ -4,10 +4,12 @@ from config import *
 from flask import Flask, render_template,request,redirect,url_for,flash,session
 # pip install pyjwt
 import jwt
-#
 from datetime import datetime,timedelta
+# pip install numpy
 import numpy as np
+# pip install pandas
 import pandas as pd
+# pip install scikit-learn
 from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split
 from sklearn import metrics
@@ -176,6 +178,30 @@ class model():
             prediccion_int= 8
         return prediccion_int
     
+
+
+    def m_verificar_token_expiro(self,tokenp,llave):
+        try:
+            tokenv = jwt.decode(tokenp,llave,algorithms="HS256")
+            # si es 0 es valido
+            tokenv = 0
+        except:
+            # si es 1 expiro o no es valido
+            tokenv= 1
+        return tokenv
+    
+    ## Pagina prediccion admin (Crud)     
+
+    def m_listar_twine_pag_pred(self):
+        cur.execute('SELECT * FROM twine_prediction_user')
+        result=cur.fetchall()
+        #Convertir los datos a diccionario
+        insertObject= []
+        columnNames = [column[0] for column in cur.description]
+        for record in result:
+            insertObject.append(dict(zip(columnNames,record)))
+        return insertObject
+
     def m_actualizar_datos_prediccion(self,fixedacidity,volatileacidity,
                                                   citricacid,residualsugar,
                                                   chlorides,freesulfurdioxide,
@@ -201,17 +227,41 @@ class model():
         flash("1")        
 
 
-    def m_verificar_token_expiro(self,tokenp,llave):
-        try:
-            tokenv = jwt.decode(tokenp,llave,algorithms="HS256")
-            # si es 0 es valido
-            tokenv = 0
-        except:
-            # si es 1 expiro o no es valido
-            tokenv= 1
-        return tokenv
     def m_delete_pred_user(self,id):
         sql = "DELETE FROM twine_prediction_user WHERE id=%s"
         data = (id,)
         cur.execute(sql,data)
+        cnx.commit()
+
+    ## Pagina Contact us admin (Crud) 
+
+    def m_listar_tcontact_us_pag_contactus_admin(self):    
+        cur.execute('SELECT * FROM tcontact_us_adm')
+        result=cur.fetchall()
+        #Convertir los datos a diccionario
+        insertObject= []
+        columnNames = [column[0] for column in cur.description]
+        for record in result:
+            insertObject.append(dict(zip(columnNames,record)))
+        return insertObject
+
+    def m_editar_pag_contact_us_admin(self,nombre,correo,mensaje,id):
+        sql = """UPDATE tcontact_us_adm SET nombre=%s, correo=%s, mensaje=%s 
+        WHERE id = %s"""
+        data = (nombre,correo,mensaje,id)
+        cur.execute(sql,data)
+        cnx.commit()
+
+    def m_delete_pag_contact_us_admin(self,id):
+        sql = "DELETE FROM tcontact_us_adm WHERE id=%s"
+        data = (id,)
+        cur.execute(sql,data)
+        cnx.commit()
+
+    #Pagina contact us  
+
+    def m_add_registro_pag_contact_us(self,nombre,correo,mensaje):
+        cur.execute("""INSERT INTO tcontact_us_adm (nombre,correo,mensaje)
+        VALUES(%s,%s,%s)""",
+        (nombre,correo,mensaje))        
         cnx.commit()
