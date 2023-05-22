@@ -269,7 +269,7 @@ section{
 /*---------------- Pagina prediccion */
 .main-prediccion{
     background: #ededed;
-    height: 100vh;
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
