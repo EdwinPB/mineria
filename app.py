@@ -80,34 +80,43 @@ def index():
 
 @appf.route('/about_Us')
 def PagAboutUs():
-     if session['token'] == None:
-          session['token']=0
-          tokenp=session['token']
-     else:
-          tokenp=session['token']
-          #si el resultado es 0 es valido si es 1 ya expiro o no es valido
-          tokenv=controlador.c_verificar_token_expiro(tokenp,appf.config['SECRET_KEY'])
-          if tokenv == 0:
-               tokenp=session['token']
-          else:
+     try:
+          if session['token'] == None:
                session['token']=0
                tokenp=session['token']
+          else:
+               tokenp=session['token']
+               #si el resultado es 0 es valido si es 1 ya expiro o no es valido
+               tokenv=controlador.c_verificar_token_expiro(tokenp,appf.config['SECRET_KEY'])
+               if tokenv == 0:
+                    tokenp=session['token']
+               else:
+                    session['token']=0
+                    tokenp=session['token']
+     except Exception as e:
+          session['token']=0
+          tokenp=session['token']
+
      return render_template('about_Us.html',token=tokenp)
 
 @appf.route('/prediccion')
 def PagPrediccion():
-     if session['token'] == None:
-          session['token']=0
-          tokenp=session['token']
-     else:
-          tokenp=session['token']
-          #si el resultado es 0 es valido si es 1 ya expiro o no es valido
-          tokenv=controlador.c_verificar_token_expiro(tokenp,appf.config['SECRET_KEY'])
-          if tokenv == 0:
-               tokenp=session['token']
-          else:
+     try:
+          if session['token'] == None:
                session['token']=0
                tokenp=session['token']
+          else:
+               tokenp=session['token']
+               #si el resultado es 0 es valido si es 1 ya expiro o no es valido
+               tokenv=controlador.c_verificar_token_expiro(tokenp,appf.config['SECRET_KEY'])
+               if tokenv == 0:
+                    tokenp=session['token']
+               else:
+                    session['token']=0
+                    tokenp=session['token']
+     except Exception as e:
+          session['token']=0
+          tokenp=session['token']
      return render_template('prediccion.html',token=tokenp)
 
 
@@ -146,18 +155,22 @@ def Prediccion():
 
 @appf.route('/contact_Us')
 def PagContactUs():
-     if session['token'] == None:
-          session['token']=0
-          tokenp=session['token']
-     else:
-          tokenp=session['token']
-          #si el resultado es 0 es valido si es 1 ya expiro o no es valido
-          tokenv=controlador.c_verificar_token_expiro(tokenp,appf.config['SECRET_KEY'])
-          if tokenv == 0:
-               tokenp=session['token']
-          else:
+     try:
+          if session['token'] == None:
                session['token']=0
                tokenp=session['token']
+          else:
+               tokenp=session['token']
+               #si el resultado es 0 es valido si es 1 ya expiro o no es valido
+               tokenv=controlador.c_verificar_token_expiro(tokenp,appf.config['SECRET_KEY'])
+               if tokenv == 0:
+                    tokenp=session['token']
+               else:
+                    session['token']=0
+                    tokenp=session['token']
+     except Exception as e:
+          session['token']=0
+          tokenp=session['token']
      return render_template('contact_Us.html',token=tokenp)
 
 @appf.route('/contact_Us/add', methods=["POST"])
