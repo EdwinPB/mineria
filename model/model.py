@@ -39,7 +39,7 @@ class model():
     def m_crear_token_admin_usuario(self):
         llave ='mysecretkey'
         id_usuarioadmin= self.m_devolver_id_admin_usuario()
-        ##timedelta(days=0, seconds=0, microseconds=0, milliseconds=0, minutes=0, hours=0, weeks=0)
+        ##timedelta(days=0, seconds=0, microseconds=0, milliseconds=0, minutes=0, hours=0, weeks=0) comment
         return jwt.encode({'public_id': id_usuarioadmin,
                             'exp': datetime.utcnow()+timedelta(hours=1)
                             },
